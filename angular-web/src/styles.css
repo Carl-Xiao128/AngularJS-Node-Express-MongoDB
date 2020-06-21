@@ -1,0 +1,58 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.md-18 {
+    font-size: 18px;
+}
+.md-24 {
+    font-size: 24px;
+}
+.md-36 {
+    font-size: 36px;
+}
+.md-48 {
+    font-size: 48px;
+}
+.error-messages {
+    color: #b85c5c !important;
+    font-weight: 700;
+    text-align: center;
+    list-style-type: none;
+}
+
+/* product */
+.product-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.grid-tile {
+    width: 30%;
+    min-width: 250px;
+}
+.grid-card {
+    max-width: 400px;
+    max-height: 300px;
+    min-height: 350px;
+    margin: 10px;
+    overflow: scroll;
+}
+
+.grid-header-image {
+    background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+    background-size: cover;
+}
+
+.title-card {
+    text-align: center;
+    vertical-align: middle;
+}

@@ -1,0 +1,47 @@
+<mat-card>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <input type="hidden" value="{{ currentUser.isApprouved }}" #isApprouved />
+    <mat-card class="title-card" *ngIf="currentUser.isApprouved">
+        <input type="hidden" value="" #prodId />
+        <a mat-raised-button color="primary" [routerLink]="['/AddProduct']">
+            Add Product
+        </a>
+    </mat-card>
+    <!-- <mat-card class="title-card" *ngIf="loading">
+        Loading Products...
+    </mat-card> -->
+    <mat-card class="title-card" *ngIf="!loading && results.length <= 0">
+        There is No Products are here ...yet!
+    </mat-card>
+    <div class="product-container">
+        <div class="grid-tile" *ngFor="let cart of results">
+            <mat-divider></mat-divider>
+            <mat-card class="grid-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="grid-header-image"></div>
+                    <mat-card-title>{{ cart.name }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="{{ cart.imageUrl }}" alt="" />
+                <mat-card-content>
+                    <p>Quantity: {{ cart.quantity }}</p>
+                    <p>Price/per:{{ cart.price }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <input type="hidden" value="{{ cart._id }}" #prodId />
+                    <a
+                        mat-raised-button
+                        color="primary"
+                        [routerLink]="['/EditProduct']"
+                        [queryParams]="{ id: prodId.value }"
+                    >
+                        Edit</a
+                    >
+                    <button mat-raised-button color="primary" (click)="deleteProduct(prodId.value)">
+                        Delete
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+            <mat-divider></mat-divider>
+        </div>
+    </div>
+</mat-card>

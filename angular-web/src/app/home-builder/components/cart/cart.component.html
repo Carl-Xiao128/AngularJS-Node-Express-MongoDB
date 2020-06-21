@@ -1,0 +1,44 @@
+<mat-card>
+    <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    <mat-card class="title-card">
+        <input type="hidden" value="" #prodId />
+        <!-- input buyerId I add -->
+        <!-- <input type="hidden" value="{{ currentUser._id }}" #buyerId /> -->
+        <button mat-raised-button color="primary" class="top-button" (click)="removeAll()">
+            Remove All Products
+        </button>
+        <button mat-raised-button color="primary" class="top-button">
+            Place All Products
+        </button>
+    </mat-card>
+    <!-- <mat-card class="title-card" *ngIf="loading">
+        Loading Cart...
+    </mat-card> -->
+    <mat-card class="title-card" *ngIf="!loading && results.length <= 0">
+        There is No Products are here ...yet!
+    </mat-card>
+    <div class="product-container">
+        <div class="grid-tile" *ngFor="let cart of results">
+            <mat-card class="grid-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="grid-header-image"></div>
+                    <mat-card-title>{{ cart.name }}</mat-card-title>
+                </mat-card-header>
+                <img mat-card-image src="{{ cart.imageUrl }}" alt="" />
+                <mat-card-content>
+                    <p>Quantity: {{ cart.quantity }}</p>
+                    <p>Price/per:{{ cart.price }}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <input type="hidden" value="{{ cart.productId }}" #prodId />
+                    <button mat-raised-button color="primary" (click)="placeaOrder(prodId.value)">
+                        Place Order
+                    </button>
+                    <button mat-raised-button color="primary" (click)="remove(prodId.value)">
+                        remove
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</mat-card>
